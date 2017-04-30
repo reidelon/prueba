@@ -6,7 +6,6 @@
 package objetos;
 
 import java.util.Map;
-//import java.lang.String;
 
 /**
  *
@@ -14,7 +13,7 @@ import java.util.Map;
  */
 public class Enum extends Common {
 
-    public Enum(String name, String description, Map pkeyValue) {
+    public Enum(java.lang.String name, java.lang.String description, Map pkeyValue) {
         super(name, description);
         this.keyValaue = pkeyValue;
     }
@@ -22,7 +21,7 @@ public class Enum extends Common {
     private Map keyValaue = null;
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return getName();
     }
 

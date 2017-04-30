@@ -11,29 +11,29 @@ package objetos;
  */
 public class Common {
 
-    public Common(String name, String description) {
+    public Common(java.lang.String name, java.lang.String description) {
         this.name = name;
         this.description = description;
     }
 
-    protected String name;
+    protected java.lang.String name;
 
-    public String getName() {
+    public java.lang.String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(java.lang.String name) {
         this.name = name;
     }
 
-    public String getDescription() {
+    public java.lang.String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(java.lang.String description) {
         this.description = description;
     }
 
-    protected String description;
+    protected java.lang.String description;
 
 }

@@ -13,7 +13,7 @@ import java.lang.String;
  */
 public class Integer extends Common {
 
-    public Integer(Boolean mandatory, java.lang.Integer min, java.lang.Integer max, String name, String description) {
+    public Integer(Boolean mandatory, java.lang.Integer min, java.lang.Integer max, java.lang.String name, java.lang.String description) {
         super(name, description);
         this.mandatory = mandatory;
         this.min = min;
@@ -26,7 +26,7 @@ public class Integer extends Common {
     private java.lang.Integer max;
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return getName();
     }
 }

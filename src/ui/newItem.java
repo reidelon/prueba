@@ -148,7 +148,7 @@ public class newItem extends javax.swing.JFrame {
 //        System.out.println(description);
 //        objetos.String_ newString = new objetos.String_(mandatory,length,name, description);
         DefaultTableModel model = (DefaultTableModel) this.tableModel;
-        Object[] data = {new objetos.String_(mandatory, length, name, description), "String_", "Delete"};
+        Object[] data = {new objetos.String(mandatory, length, name, description), "String", "Delete"};
         model.addRow(data);
 //        int rowCount = this.tableModel.getRowCount();
 //        this.tableModel.setValueAt(newString, rowCount-1, 0);

@@ -5,16 +5,15 @@
  */
 package objetos;
 
-import java.lang.String;
 import java.lang.Integer;
 
 /**
  *
  * @author tux
  */
-public class String_ extends Common {
+public class String extends Common {
 
-    public String_(Boolean mandatory, Integer length, String name, String description) {
+    public String(Boolean mandatory, Integer length, java.lang.String name, java.lang.String description) {
         super(name, description);
         this.mandatory = mandatory;
         this.length = length;
@@ -25,7 +24,7 @@ public class String_ extends Common {
     private Integer length;
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return getName();
     }
 }
