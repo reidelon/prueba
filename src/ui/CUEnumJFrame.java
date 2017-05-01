@@ -5,19 +5,24 @@
  */
 package ui;
 
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 import javax.swing.table.TableModel;
 
 /**
  *
  * @author tux
  */
-public class editJFrame extends javax.swing.JFrame {
+public class CUEnumJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form editJFrame
      */
-    public editJFrame(TableModel table) {
+    public CUEnumJFrame(TableModel table,char todo) {
+        this.setTitle("Edit Enum");
         this.tableModel = table;
+        this.todo = todo;
         initComponents();
     }
 
@@ -30,27 +35,17 @@ public class editJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Hola");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(205, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(170, 170, 170))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel1)
-                .addContainerGap(197, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -60,10 +55,10 @@ public class editJFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
     }
-   private TableModel tableModel;
+    private TableModel tableModel;
+    private char todo;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

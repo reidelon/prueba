@@ -13,13 +13,38 @@ import java.lang.Integer;
  */
 public class String extends Common {
 
-    public String(Boolean mandatory, Integer length, java.lang.String name, java.lang.String description) {
+    public String(Boolean mandatory, Integer length, java.lang.String name, java.lang.String description, Integer defaultValue) {
         super(name, description);
         this.mandatory = mandatory;
         this.length = length;
+        this.defaultValue = defaultValue;
     }
 
     private Integer defaultValue = null;
+
+    public Integer getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(Integer defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
+    public Boolean getMandatory() {
+        return mandatory;
+    }
+
+    public void setMandatory(Boolean mandatory) {
+        this.mandatory = mandatory;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
     private Boolean mandatory;
     private Integer length;
 

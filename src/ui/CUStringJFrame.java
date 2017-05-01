@@ -6,6 +6,7 @@
 package ui;
 
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -13,17 +14,30 @@ import javax.swing.table.TableModel;
  *
  * @author tux
  */
-public class newItem extends javax.swing.JFrame {
+public class CUStringJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form newItem
      */
-    public newItem(TableModel table) {
-//        TableModel table
+    public CUStringJFrame(TableModel table, char todo, int rowSelected) {
+
         this.tableModel = table;
-        initComponents();
+        this.todo = todo;
+        this.rowSelected = rowSelected;
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("New String property");
+
+        initComponents();
+    }
+
+    public CUStringJFrame(TableModel table, char todo) {
+//        TableModel table
+        this.tableModel = table;
+        this.todo = todo;
+        this.rowSelected = rowSelected;
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setTitle("New String property");
+        initComponents();
     }
 
     /**
@@ -49,6 +63,11 @@ public class newItem extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         save.setText("Save");
         save.addActionListener(new java.awt.event.ActionListener() {
@@ -140,25 +159,54 @@ public class newItem extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-        String name = this.name.getText();
-        String description = this.description.getText();
-        Integer defaultValue = new Integer(this.defaultvalue.getText());
-        Integer length = new Integer(this.length.getText());
-        Boolean mandatory = this.mandatory.isSelected();
+        if (this.todo == 'c') {
+            String name = this.name.getText();
+            String description = this.description.getText();
+            Integer defaultValue = new Integer(this.defaultvalue.getText());
+            Integer length = new Integer(this.length.getText());
+            Boolean mandatory = this.mandatory.isSelected();
 //        System.out.println(description);
 //        objetos.String_ newString = new objetos.String_(mandatory,length,name, description);
-        DefaultTableModel model = (DefaultTableModel) this.tableModel;
-        Object[] data = {new objetos.String(mandatory, length, name, description), "String", "Delete"};
-        model.addRow(data);
+            DefaultTableModel model = (DefaultTableModel) this.tableModel;
+            Object[] data = {new objetos.String(mandatory, length, name, description, defaultValue), "String"};
+            model.addRow(data);
 //        int rowCount = this.tableModel.getRowCount();
 //        this.tableModel.setValueAt(newString, rowCount-1, 0);
 
-        this.dispose();
+            this.dispose();
+        } else {
+            int rowSelected = this.rowSelected;
+            DefaultTableModel model = (DefaultTableModel) this.tableModel;
+            Object itemSelected = this.tableModel.getValueAt(rowSelected, 0);
+            objetos.String item = (objetos.String) itemSelected;
+            item.setName(this.name.getText());
+            item.setDescription(this.description.getText());
+            item.setDefaultValue(new Integer(this.defaultvalue.getText()));
+            item.setLength(new Integer(this.length.getText()));
+            item.setMandatory(this.mandatory.isSelected());
+            model.fireTableCellUpdated(rowSelected, 0);
+            this.dispose();
+        }
+
     }//GEN-LAST:event_saveActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if (rowSelected != -1) {
+            DefaultTableModel model = (DefaultTableModel) this.tableModel;
+            Object itemSelected = this.tableModel.getValueAt(rowSelected, 0);
+            objetos.String item = (objetos.String) itemSelected;
+            this.description.setText(item.getDescription());
+            this.name.setText(item.getName());
+            this.mandatory.setSelected(item.getMandatory());
+            this.length.setText(item.getLength().toString());
+            this.defaultvalue.setText(item.getDefaultValue().toString());
+        }
+
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -177,13 +225,13 @@ public class newItem extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(newItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CUStringJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(newItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CUStringJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(newItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CUStringJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(newItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CUStringJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -193,8 +241,18 @@ public class newItem extends javax.swing.JFrame {
 //                new newItem().setVisible(true);
 //            }
 //        });
+        //</editor-fold>
+
+        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new CUStringJFrame().setVisible(true);
+//            }
+//        });
     }
     private TableModel tableModel;
+    private char todo;
+    private int rowSelected = -1;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel;

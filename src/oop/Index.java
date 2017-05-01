@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import ui.NewJFrame;
+import ui.MainFrame;
 
 /**
  *
@@ -38,7 +38,7 @@ public class Index {
 
         }
         
-        NewJFrame f = new NewJFrame();
+        MainFrame f = new MainFrame();
 //        f.setSize(400, 300);
         f.setTitle("Properties CRUD");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,10 +47,10 @@ public class Index {
         enu.put(1, new java.lang.String("2"));
         enu.put(2, new java.lang.String("3"));
 
-        Object rowData[][] = {{new objetos.String(false, 2, "pepe", "blabla"), "String", "Delete"},
-        {new objetos.Integer(true, 1, 2, "qk", "blablabla"), "Integer", "Delete"},
-        {new objetos.Enum("cuco", "blablabla", enu), "Enum", "Delete"},};
-        java.lang.String columnNames[] = {"Name", "Type", ""};
+        Object rowData[][] = {{new objetos.String(true, 2, "pepe", "blabla", 1), "String"},
+        {new objetos.Integer(true, 1, 2, "qk", "blablabla"), "Integer"},
+        {new objetos.Enum("cuco", "blablabla", enu), "Enum"}};
+        java.lang.String columnNames[] = {"Name", "Type"};
 
         TableModel model = new DefaultTableModel(rowData, columnNames);
         f.getjTable().setModel(model);
