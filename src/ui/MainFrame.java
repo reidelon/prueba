@@ -168,7 +168,7 @@ public class MainFrame extends javax.swing.JFrame {
             f.pack();
             f.setVisible(true);
         } else if (this.jCheckBoxInteger.isSelected() && !this.jCheckBoxEnum.isSelected()) {
-            CUIntegerJFrame f = new CUIntegerJFrame(this.jTable1.getModel());
+            CUIntegerJFrame f = new CUIntegerJFrame(this.jTable1.getModel(),'c');
             f.setTitle("Create Integer");
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             f.pack();
@@ -195,7 +195,7 @@ public class MainFrame extends javax.swing.JFrame {
                 f.pack();
                 f.setVisible(true);
             } else if (item instanceof objetos.Integer) {
-                CUIntegerJFrame f = new CUIntegerJFrame(this.jTable1.getModel());
+                CUIntegerJFrame f = new CUIntegerJFrame(this.jTable1.getModel(),'e', this.jTable1.getSelectedRow());
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 f.pack();
                 f.setVisible(true);
