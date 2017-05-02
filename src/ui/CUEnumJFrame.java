@@ -199,7 +199,7 @@ public class CUEnumJFrame extends javax.swing.JFrame {
                     if (!enu.containsKey(key.toString())) {
                         enu.put(key.toString(), value.toString());
                     } else {
-                        JOptionPane optionPane = new JOptionPane("The key " + key.toString() + " entered is already in use",
+                        JOptionPane optionPane = new JOptionPane("The key " + key.toString() + " is already in use please change it.",
                                 JOptionPane.ERROR_MESSAGE);
                         JDialog dialog = optionPane.createDialog(this, "!Error");
                         dialog.setVisible(true);
@@ -237,7 +237,7 @@ public class CUEnumJFrame extends javax.swing.JFrame {
                     if (!enu.containsKey(key.toString())) {
                         enu.put(key.toString(), value.toString());
                     } else {
-                        JOptionPane optionPane = new JOptionPane("The key " + key.toString() + " entered is already in use",
+                        JOptionPane optionPane = new JOptionPane("The key " + key.toString() + " is already in use please change it.",
                                 JOptionPane.ERROR_MESSAGE);
                         JDialog dialog = optionPane.createDialog(this, "!Error");
                         dialog.setVisible(true);

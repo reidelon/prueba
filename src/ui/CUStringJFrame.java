@@ -159,7 +159,7 @@ public class CUStringJFrame extends javax.swing.JFrame {
         if (this.todo == 'c') {
             String name = this.name.getText();
             String description = this.description.getText();
-            Integer defaultValue = new Integer(this.defaultvalue.getText());
+            String defaultValue = this.defaultvalue.getText();
             Integer length = new Integer(this.length.getText());
             Boolean mandatory = this.mandatory.isSelected();
 //        System.out.println(description);
@@ -178,7 +178,7 @@ public class CUStringJFrame extends javax.swing.JFrame {
             objetos.String item = (objetos.String) itemSelected;
             item.setName(this.name.getText());
             item.setDescription(this.description.getText());
-            item.setDefaultValue(new Integer(this.defaultvalue.getText()));
+            item.setDefaultValue(this.defaultvalue.getText());
             item.setLength(new Integer(this.length.getText()));
             item.setMandatory(this.mandatory.isSelected());
             model.fireTableCellUpdated(rowSelected, 0);

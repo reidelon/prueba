@@ -13,20 +13,20 @@ import java.lang.Integer;
  */
 public class String extends Common {
 
-    public String(Boolean mandatory, Integer length, java.lang.String name, java.lang.String description, Integer defaultValue) {
+    public String(Boolean mandatory, Integer length, java.lang.String name, java.lang.String description, java.lang.String defaultValue) {
         super(name, description);
         this.mandatory = mandatory;
         this.length = length;
         this.defaultValue = defaultValue;
     }
 
-    private Integer defaultValue = null;
+    private java.lang.String defaultValue = null;
 
-    public Integer getDefaultValue() {
+    public java.lang.String getDefaultValue() {
         return defaultValue;
     }
 
-    public void setDefaultValue(Integer defaultValue) {
+    public void setDefaultValue(java.lang.String defaultValue) {
         this.defaultValue = defaultValue;
     }
 

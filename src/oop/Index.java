@@ -47,7 +47,7 @@ public class Index {
         enu.put("1", new java.lang.String("Mecanico"));
         enu.put("2", new java.lang.String("Informatico"));
 
-        Object rowData[][] = {{new objetos.String(true, 2, "pepe", "blabla", 1), "String"},
+        Object rowData[][] = {{new objetos.String(true, 2, "pepe", "blabla", "string"), "String"},
         {new objetos.Integer(true, 1, 2, "qk", "blablabla",33), "Integer"},
         {new objetos.Enum("cuco", "blablabla", enu), "Enum"}};
         java.lang.String columnNames[] = {"Name", "Type"};

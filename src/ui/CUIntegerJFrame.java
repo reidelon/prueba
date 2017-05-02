@@ -53,6 +53,7 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         max = new javax.swing.JTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -68,6 +69,12 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
         jLabel4.setText("Name:");
 
         jLabel2.setText("Default Value:");
+
+        defaultvalue.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                defaultvalueKeyTyped(evt);
+            }
+        });
 
         mandatory.setText("Mandatory:");
         mandatory.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -86,9 +93,23 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
             }
         });
 
+        min.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                minKeyTyped(evt);
+            }
+        });
+
         jLabel3.setText("min");
 
         jLabel5.setText("max");
+
+        max.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                maxKeyTyped(evt);
+            }
+        });
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,6 +145,10 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
                                 .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(mandatory))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 195, 195))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +179,9 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
                                 .addComponent(save)
                                 .addComponent(cancel)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -178,7 +205,7 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
             //        objetos.String_ newString = new objetos.String_(mandatory,length,name, description);
             DefaultTableModel model = (DefaultTableModel) this.tableModel;
 //            Object[] data = {new objetos.Integer(mandatory, name, description, defaultValue), "String"};
-            Object[] data = {new objetos.Integer(mandatory, min, max, name, description, defaultValue), "String"};
+            Object[] data = {new objetos.Integer(mandatory, min, max, name, description, defaultValue), "Integer"};
             model.addRow(data);
             //        int rowCount = this.tableModel.getRowCount();
             //        this.tableModel.setValueAt(newString, rowCount-1, 0);
@@ -214,6 +241,28 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formComponentShown
 
+    private void defaultvalueKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_defaultvalueKeyTyped
+         // TODO add your handling code here:
+        char enter = evt.getKeyChar();
+        if(!(Character.isDigit(enter))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_defaultvalueKeyTyped
+
+    private void minKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_minKeyTyped
+        char enter = evt.getKeyChar();
+        if(!(Character.isDigit(enter))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_minKeyTyped
+
+    private void maxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_maxKeyTyped
+        char enter = evt.getKeyChar();
+        if(!(Character.isDigit(enter))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_maxKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -227,6 +276,7 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
     private javax.swing.JButton cancel;
     private javax.swing.JTextField defaultvalue;
     private javax.swing.JTextPane description;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

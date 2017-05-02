@@ -197,7 +197,7 @@ public class MainFrame extends javax.swing.JFrame {
             } else if (item instanceof objetos.Integer) {
                 CUIntegerJFrame f = new CUIntegerJFrame(this.jTable1.getModel(),'e', this.jTable1.getSelectedRow());
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                f.setTitle("Edit String");
+                f.setTitle("Edit Integer");
                 f.pack();
                 f.setVisible(true);
             } else if (item instanceof Enum) {
