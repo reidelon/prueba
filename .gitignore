@@ -1,6 +1,4 @@
 build/
-dist/
-lib/
 nbproject/
 *.xml
 *.mf
