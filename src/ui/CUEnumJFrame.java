@@ -5,9 +5,13 @@
  */
 package ui;
 
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JRadioButton;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
@@ -19,10 +23,19 @@ public class CUEnumJFrame extends javax.swing.JFrame {
     /**
      * Creates new form editJFrame
      */
-    public CUEnumJFrame(TableModel table,char todo) {
-        this.setTitle("Edit Enum");
+    public CUEnumJFrame(TableModel table, char todo) {
         this.tableModel = table;
         this.todo = todo;
+        this.rowsAdd = new ArrayList();
+        initComponents();
+
+    }
+
+    public CUEnumJFrame(TableModel table, char todo, int rowselected) {
+        this.rowSelected = rowselected;
+        this.todo = todo;
+        this.tableModel = table;
+        this.rowsAdd = new ArrayList();
         initComponents();
     }
 
@@ -35,21 +48,240 @@ public class CUEnumJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        description = new javax.swing.JTextPane();
+        name = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        save = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        jLabel1.setText("Description:");
+
+        jScrollPane1.setViewportView(description);
+
+        jLabel4.setText("Name:");
+
+        save.setText("Save");
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+
+        cancel.setText("Cancel");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Key", "Value"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jButton1.setText("New");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(263, 263, 263)
+                .addComponent(save)
+                .addGap(18, 18, 18)
+                .addComponent(cancel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(save)
+                    .addComponent(cancel))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if (rowSelected != -1) {
+            DefaultTableModel model = (DefaultTableModel) this.tableModel;
+            Object itemSelected = this.tableModel.getValueAt(rowSelected, 0);
+            objetos.Enum item = (objetos.Enum) itemSelected;
+            this.description.setText(item.getDescription());
+            this.name.setText(item.getName());
+            Map items = item.getKeyValaue();
+//            Object[] rowData = null;
+            items.forEach((k, v) -> f(k, v));
+        }
+    }//GEN-LAST:event_formComponentShown
+    private void f(Object k, Object v) {
+        Object rowData[] = {k, v};
+
+
+        ((DefaultTableModel) this.jTable1.getModel()).addRow(rowData);
+//        model.addRow(rowData);
+//        System.out.println(((Integer)k).toString());
+    }
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        boolean duplicated = false;
+        Map enu = new Hashtable<java.lang.Integer, java.lang.String>();
+        int cantRows = this.jTable1.getRowCount();
+        int r = 0;
+        if (this.todo == 'c') {
+//            Hashtable enu = new Hashtable<objetos.Integer, java.lang.String>();
+//            int cantRows = this.jTable1.getRowCount();
+//            int r = 0;
+            if (cantRows > 0) {
+                for (int i = 0; i < cantRows; i++) {
+                    Object key = this.jTable1.getValueAt(r, 0);
+                    Object value = this.jTable1.getValueAt(r, 1);
+                    if (!enu.containsKey(key.toString())) {
+                        enu.put(key.toString(), value.toString());
+                    } else {
+                        JOptionPane optionPane = new JOptionPane("The key " + key.toString() + " entered is already in use",
+                                JOptionPane.ERROR_MESSAGE);
+                        JDialog dialog = optionPane.createDialog(this, "!Error");
+                        dialog.setVisible(true);
+                        duplicated = true;
+                        break;
+                    }
+//                    c += 1;
+                    r += 1;
+                }
+            }
+            Object[] data = {new objetos.Enum(this.name.getText(), this.description.getText(), enu), "Enum"};
+            DefaultTableModel model = (DefaultTableModel) this.tableModel;
+//            Object[] data = {new objetos.Integer(mandatory, min, max, name, description, defaultValue), "String"};
+            model.addRow(data);
+//            model.fireTableCellUpdated(rowSelected, 0);
+            if (!duplicated) {
+                this.dispose();
+            }
+        } else {
+            int rowSelected = this.rowSelected;
+            DefaultTableModel model = (DefaultTableModel) this.tableModel;
+            Object itemSelected = model.getValueAt(rowSelected, 0);
+            objetos.Enum item = (objetos.Enum) itemSelected;
+            item.setName(this.name.getText());
+            item.setDescription(this.description.getText());
+
+//            Map enu = item.getKeyValaue();
+//            int cantRows = this.jTable1.getRowCount();
+            if (cantRows > 0) {
+                for (int i = 0; i < cantRows; i++) {
+                    Object key = this.jTable1.getValueAt(r, 0);
+                    Object value = this.jTable1.getValueAt(r, 1);
+//                    enu.put(key.toString(), value.toString());
+                    
+                    if (!enu.containsKey(key.toString())) {
+                        enu.put(key.toString(), value.toString());
+                    } else {
+                        JOptionPane optionPane = new JOptionPane("The key " + key.toString() + " entered is already in use",
+                                JOptionPane.ERROR_MESSAGE);
+                        JDialog dialog = optionPane.createDialog(this, "!Error");
+                        dialog.setVisible(true);
+                        duplicated = true;
+                        break;
+                    }
+                    r += 1;
+                }
+
+            }
+            item.setKeyValaue(enu);
+
+            model.fireTableCellUpdated(rowSelected, 0);
+             if (!duplicated) {
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_saveActionPerformed
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Object[] data = {"", ""};
+        DefaultTableModel dModel = (DefaultTableModel) this.jTable1.getModel();
+        dModel.addRow(data);
+//        ((DefaultTableModel) this.jTable1.getModel()).getRowCount()
+        this.rowsAdd.add(dModel.getRowCount() - 1);
+//        this.rowsAdd.add(new Object());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int rowSelected = this.jTable1.getSelectedRow();
+        if (rowSelected != -1) {
+            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            model.removeRow(rowSelected);
+        } else {
+            JOptionPane optionPane = new JOptionPane("You must select an item to delete.",
+                    JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog(this, "!Error");
+            dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -59,6 +291,20 @@ public class CUEnumJFrame extends javax.swing.JFrame {
     }
     private TableModel tableModel;
     private char todo;
+    private int rowSelected = -1;
+    private List rowsAdd;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancel;
+    private javax.swing.JTextPane description;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField name;
+    private javax.swing.JButton save;
     // End of variables declaration//GEN-END:variables
 }

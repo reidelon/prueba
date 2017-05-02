@@ -6,8 +6,8 @@
 package oop;
 
 import java.util.Hashtable;
+import java.util.Map;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -43,9 +43,9 @@ public class Index {
         f.setTitle("Properties CRUD");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
-        Hashtable enu = new Hashtable<objetos.Integer, java.lang.String>();
-        enu.put(1, new java.lang.String("2"));
-        enu.put(2, new java.lang.String("3"));
+        Map enu = new Hashtable<java.lang.String, java.lang.String>();
+        enu.put("1", new java.lang.String("Mecanico"));
+        enu.put("2", new java.lang.String("Informatico"));
 
         Object rowData[][] = {{new objetos.String(true, 2, "pepe", "blabla", 1), "String"},
         {new objetos.Integer(true, 1, 2, "qk", "blablabla",33), "Integer"},

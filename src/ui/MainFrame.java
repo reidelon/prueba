@@ -9,7 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static jdk.nashorn.internal.objects.NativeRegExp.source;
+import objetos.Enum;
 
 /**
  *
@@ -197,11 +197,13 @@ public class MainFrame extends javax.swing.JFrame {
             } else if (item instanceof objetos.Integer) {
                 CUIntegerJFrame f = new CUIntegerJFrame(this.jTable1.getModel(),'e', this.jTable1.getSelectedRow());
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                f.setTitle("Edit String");
                 f.pack();
                 f.setVisible(true);
-            } else if (item instanceof objetos.Enum) {
-                CUEnumJFrame f = new CUEnumJFrame(this.jTable1.getModel(), 'e');
+            } else if (item instanceof Enum) {
+                CUEnumJFrame f = new CUEnumJFrame(this.jTable1.getModel(), 'e', this.jTable1.getSelectedRow());
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                f.setTitle("Edit Enum");
                 f.pack();
                 f.setVisible(true);
             }

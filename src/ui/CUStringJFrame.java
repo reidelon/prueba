@@ -25,18 +25,15 @@ public class CUStringJFrame extends javax.swing.JFrame {
         this.todo = todo;
         this.rowSelected = rowSelected;
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setTitle("New String property");
 
         initComponents();
     }
 
     public CUStringJFrame(TableModel table, char todo) {
-//        TableModel table
         this.tableModel = table;
         this.todo = todo;
         this.rowSelected = rowSelected;
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setTitle("New String property");
         initComponents();
     }
 

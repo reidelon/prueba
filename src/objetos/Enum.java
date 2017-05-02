@@ -18,7 +18,7 @@ public class Enum extends Common {
         this.keyValaue = pkeyValue;
     }
 
-    private Map keyValaue = null;
+    private Map<java.lang.String, java.lang.String> keyValaue = null;
 
     @Override
     public java.lang.String toString() {

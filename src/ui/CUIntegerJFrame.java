@@ -18,7 +18,6 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
      * Creates new form editJFrame
      */
     public CUIntegerJFrame(TableModel table, char todo) {
-        this.setTitle("Create Integer");
         this.todo = todo;
         this.tableModel = table;
         initComponents();
@@ -27,7 +26,6 @@ public class CUIntegerJFrame extends javax.swing.JFrame {
     public CUIntegerJFrame(TableModel table, char todo, int rowselected) {
         this.rowSelected = rowselected;
         this.todo = todo;
-        this.setTitle("Edit Integer");
         this.tableModel = table;
         initComponents();
     }
